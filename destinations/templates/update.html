@@ -6,7 +6,13 @@
 {% block content %}
 <form action="{% url 'destination-update' destination_obj.id %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
-  {{form.as_p}}
-  <input type="submit" value="Update">
+    <div class="d-flex align-items-center justify-content-center">
+    <div class="row">
+      <div class="col">
+        {{form|crispy}}
+        <input type="submit" class="btn btn-success mt-2" value="Update">
+      </div>
+    </div>
+  </div>
 </form>
 {% endblock content %}

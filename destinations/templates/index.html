@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Tourista{% endblock title %}
+
+{% block content %}
+
+  <div class="container-fluid mt-3">
+    <div id="carousel_index" class="carousel slide carousel-fade" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel_index" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel_index" data-slide-to="1"></li>
+        <li data-target="#carousel_index" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        {% for destination in destinations|slice:":3" %}
+          {% if forloop.first%}
+            <div class="carousel-item active">
+          {% else %}
+            <div class="carousel-item">
+        {% endif %}
+        <a href="{% url 'destination-detail' destination.id %}"><img class="img-fluid" src="{{destination.pretty_picture.url}}" alt="{{destination.name}}"></a>
+      </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+
+{% endblock content %}
+
+

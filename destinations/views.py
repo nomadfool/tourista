@@ -1,6 +1,17 @@
 from django.shortcuts import render, redirect
 from .models import Destination
 from .forms import DestinationForm
+import random
+
+def welcome(request):
+    items = list(Destination.objects.all())
+    # generate a random object for the homepage
+    #random_items = random.choice(items)
+    random_items = random.sample(items, 3)
+    context = {
+        "destinations" : random_items
+    }
+    return render(request, 'index.html', context)
 
 
 def destination_list(request):

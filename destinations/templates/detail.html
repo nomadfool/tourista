@@ -1,17 +1,29 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
-{% block title %}Detail{% endblock title %} 
+{% block title %}Detail{% endblock title %}
 
 {% block content %}
-    <p>{{destination.name}}</p>
-    <p>{{destination.description}}</p>
-    <p>{{destination.activities}}</p>
-    <p><img src="{{destination.pretty_picture.url}}"></p>
-    <p>{{destination.optimal_visiting_season}}</p>
-    <a href="{% url 'destination-update' destination.id %}">
-        <button>Update</button>
-    </a>
-    <a href="{% url 'destination-delete' destination.id %}">
-        <button>Delete</button>
-    </a>
+    <div class="container pt-5">
+        <div class="row">
+            <div clas= "col-8">
+                <h1>{{destination.name}}</h1>
+                <p>{{destination.description}}</p>
+                <p>{{destination.activities}}</p>
+                <p>{{destination.optimal_visiting_season}}</p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div clas= "col">
+                <img class="img-fluid" src="{{destination.pretty_picture.url}}">
+            </div>
+        </div>
+        <div class="row pt-3 align-items-center justify-content-center">
+            <div clas= "col">
+              <a href="{% url 'destination-update' destination.id %}"><button type="button" class="btn btn-success">Update</button></a>
+              <a href="{% url 'destination-delete' destination.id %}"><button type="button" class="btn btn-danger">Delete</button></a>
+            </div>
+        </div>
+    </div>
+
 {% endblock content %}
